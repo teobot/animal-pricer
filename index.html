@@ -15,18 +15,25 @@
 <body class="h-100 w-100" style="margin-top: 54px;">
 
     <div class="container-fluid h-100 w-100 m-0 p-0" id="main_container" style="">
-        <nav class="navbar fixed-top navbar-dark bg-dark justify-content-center">
-            <a class="navbar-brand" href="#">Filter By:</a>
-            <button class="navbar-item btn btn-secondary ml-1 mr-1" v-on:click="filter_by_price()">Price</button>
-            <button class="navbar-item btn btn-secondary ml-1 mr-1" v-on:click="filter_by_name()">Name</button>
+
+        <nav class="navbar fixed-top navbar-dark bg-dark justify-content-between">
+
+            <div class="nav-item d-flex align-self-center justify-content-center ">
+                <button class="navbar-item btn btn-secondary ml-1 mr-1" v-on:click="filter_by_price()">Price</button>
+                <button class="navbar-item btn btn-secondary ml-1 mr-1" v-on:click="filter_by_name()">Name</button>
+            </div>
+
+            <div class="nav-item">
+                <button :class="'btn btn-' + animal_change_button_color" v-on:click="change_animal_filter()" style="width: 75px;">{{animal_change_button_text}}</button>
+            </div>
+
         </nav>
 
         <!-- Fish Items here ... -->
-        <div v-for="fish in fishData" class="fish-div row w-100 m-0 p-0 border-bottom" style="height: 100px;">
-
+        <div v-for="fish in fishData" class="fish-div row w-100 m-0 p-0 border-bottom" style="height: 100px;" v-if="fish_visible">
             <!-- Fish Image ... -->
             <div class="d-flex align-self-center float-left justify-content-center" style="width: 100px;">
-                <img :src="'images/' + fish.fish_image" class="align-middle m-1" style="width: 75px; height: 75px;">
+                <img :src="'images/fish/' + fish.fish_image" class="align-middle m-1" style="width: 75px; height: 75px;">
             </div>
             <!-- Fish Image ... -->
 
@@ -45,9 +52,34 @@
                 </div>
             </div>
             <!-- Fish Name and Price ... -->
-
         </div>
         <!-- Fish Items here ... -->
+
+        <!-- insect Items here ... -->
+        <div v-for="insect in insectData" class="insect-div row w-100 m-0 p-0 border-bottom" style="height: 100px;" v-if="insects_visible">
+            <!-- insect Image ... -->
+            <div class="d-flex align-self-center float-left justify-content-center" style="width: 100px;">
+                <img :src="'images/insects/' + insect.insect_image" class="align-middle m-1" style="width: 75px; height: 75px;">
+            </div>
+            <!-- insect Image ... -->
+
+            <!-- insect Name and Price ... -->
+            <div class="m-3">
+                <div class="row">
+                    <span class="h5">
+                        {{insect.insect_name}}
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="float-left">
+                        <img src="images/bells.png" class="align-middle" style="width: 25px; height: 25px;">
+                    </div>
+                    {{priceWithCommas(insect.insect_price)}}
+                </div>
+            </div>
+            <!-- insect Name and Price ... -->
+        </div>
+        <!-- insect Items here ... -->
 
     </div>
     <!-- Optional JavaScript -->
@@ -57,6 +89,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- Vue Scripts here -->
     <script src="data/fishData.js"></script>
+    <script src="data/insectData.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 

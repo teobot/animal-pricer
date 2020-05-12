@@ -1,23 +1,51 @@
 var main = new Vue({
     el: '#main_container',
     data: {
-        fishData: fishData
+        fishData: fishData,
+        insectData: insectData,
+        fish_visible: true,
+        insects_visible: false,
+        animal_change_button_color: "success",
+        animal_change_button_text: "Insects"
     },
-    created() {
-        this.fishData = this.fishData.sort(this.dynamicsort("fish_name", "asc"))
+    mounted() {
+        window.addEventListener('load', () => {
+            main.filter_by_name();
+        });
     },
     methods: {
-        priceWithCommas: function(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        change_animal_filter: function() {
+            if (main.fish_visible) {
+                // Fish is visible so remove it and display insects
+                main.fish_visible = false;
+                main.insects_visible = true;
+                main.animal_change_button_color = "primary";
+                main.animal_change_button_text = "Fish";
+            } else {
+                // Insects are visible so display fish
+                main.fish_visible = true;
+                main.insects_visible = false;
+                main.animal_change_button_color = "success";
+                main.animal_change_button_text = "Insects";
+            }
         },
         filter_by_price: function() {
             // Filter By Price
-            main.fishData.sort(main.dynamicsort("fish_price", "asc"))
-
+            main.fishData = main.sort_array(main.fishData, "fish_price", "asc");
+            main.insectData = main.sort_array(main.insectData, "insect_price", "asc");
         },
         filter_by_name: function() {
             // Filter By Name
-            main.fishData.sort(main.dynamicsort("fish_name", "asc"))
+            main.fishData = main.sort_array(main.fishData, "fish_name", "asc");
+            main.insectData = main.sort_array(main.insectData, "insect_name", "asc");
+        },
+        priceWithCommas: function(x) {
+            // Add commas to price
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        sort_array: function(array, element, order) {
+            // Sort a array using element and dynamicsort
+            return array.sort(main.dynamicsort(element, order))
         },
         dynamicsort: function(property, order) {
             var sort_order = 1;
