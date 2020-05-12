@@ -1,5 +1,5 @@
 var fishData = [{
-        fish_image: "pale_Chub_ACNH.png",
+        fish_image: "Pale_Chub_ACNH.png",
         fish_name: "Pale Shub",
         fish_price: 160,
     },
