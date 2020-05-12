@@ -315,7 +315,7 @@ var fishData = [{
     },
     {
         fish_image: 'Moray_Eel_ACNH.png',
-        fish_name: 'Moray_Eel',
+        fish_name: 'Moray Eel',
         fish_price: '2000',
     },
     {
