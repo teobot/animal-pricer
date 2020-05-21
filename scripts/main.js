@@ -6,7 +6,9 @@ var main = new Vue({
         fish_visible: true,
         insects_visible: false,
         animal_change_button_color: "success",
-        animal_change_button_text: "Insects"
+        animal_change_button_text: "Insects",
+        animal_price_sorting_type: "desc",
+        animal_name_sorting_type: "asc"
     },
     mounted() {
         window.addEventListener('load', () => {
@@ -31,13 +33,24 @@ var main = new Vue({
         },
         filter_by_price: function() {
             // Filter By Price
-            main.fishData = main.sort_array(main.fishData, "fish_price", "asc");
-            main.insectData = main.sort_array(main.insectData, "insect_price", "asc");
+            if (main.animal_price_sorting_type == "desc") {
+                main.animal_price_sorting_type = "asc";
+            } else {
+                main.animal_price_sorting_type = "desc";
+            }
+            main.fishData = main.sort_array(main.fishData, "fish_price", main.animal_price_sorting_type);
+            main.insectData = main.sort_array(main.insectData, "insect_price", main.animal_price_sorting_type);
         },
         filter_by_name: function() {
             // Filter By Name
-            main.fishData = main.sort_array(main.fishData, "fish_name", "asc");
-            main.insectData = main.sort_array(main.insectData, "insect_name", "asc");
+            if (main.animal_name_sorting_type == "desc") {
+                main.animal_name_sorting_type = "asc";
+            } else {
+                main.animal_name_sorting_type = "desc";
+            }
+
+            main.fishData = main.sort_array(main.fishData, "fish_name", main.animal_name_sorting_type);
+            main.insectData = main.sort_array(main.insectData, "insect_name", main.animal_name_sorting_type);
         },
         priceWithCommas: function(x) {
             // Add commas to price
