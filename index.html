@@ -37,7 +37,7 @@
         <div v-for="fish in fishData" class="fish-div row w-100 m-0 p-0 border-bottom" style="height: 100px;" v-if="fish_visible">
             <!-- Fish Image ... -->
             <div class="d-flex align-self-center float-left justify-content-center" style="width: 100px;">
-                <img :src="'images/fish/' + fish.fish_image" class="align-middle m-1" style="width: 75px; height: 75px;">
+                <img :src="'images/fish/' + fish.fish_image" class="align-middle m-1" :alt="fish.fish_name" style="width: 75px; height: 75px;">
             </div>
             <!-- Fish Image ... -->
 
@@ -63,7 +63,7 @@
         <div v-for="insect in insectData" class="insect-div row w-100 m-0 p-0 border-bottom" style="height: 100px;" v-if="insects_visible">
             <!-- insect Image ... -->
             <div class="d-flex align-self-center float-left justify-content-center" style="width: 100px;">
-                <img :src="'images/insects/' + insect.insect_image" class="align-middle m-1" style="width: 75px; height: 75px;">
+                <img :src="'images/insects/' + insect.insect_image" class="align-middle m-1" :alt="insect.insect_name" style="width: 75px; height: 75px;">
             </div>
             <!-- insect Image ... -->
 
