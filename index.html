@@ -24,12 +24,12 @@
         <nav class="navbar fixed-top navbar-dark bg-dark justify-content-between">
 
             <div class="nav-item d-flex align-self-center justify-content-center ">
-                <button class="navbar-item btn btn-secondary ml-1 mr-1" v-on:click="filter_by_price()">Price</button>
-                <button class="navbar-item btn btn-secondary ml-1 mr-1" v-on:click="filter_by_name()">Name</button>
+                <button class="navbar-item btn btn-secondary ml-1 mr-1 text-center" v-on:click="filter_by_price()">Price</button>
+                <button class="navbar-item btn btn-secondary ml-1 mr-1 text-center" v-on:click="filter_by_name()">Name</button>
             </div>
 
             <div class="nav-item">
-                <button :class="'btn btn-' + animal_change_button_color" v-on:click="change_animal_filter()" style="width: 75px;">{{animal_change_button_text}}</button>
+                <button class="text-center" :class="'btn btn-' + animal_change_button_color" v-on:click="change_animal_filter()" style="width: 75px;">{{animal_change_button_text}}</button>
             </div>
 
         </nav>
